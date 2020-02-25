@@ -1,10 +1,12 @@
 module.exports = {
   siteMetadata: {
     title: `Develop Blog`,
+    position: `FullStack Developer`,
     description: `A blog about frontend development and other cool stuffs.`,
     author: `Juan Versolato Lopes`,
   },
   plugins: [
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -12,6 +14,19 @@ module.exports = {
         name: `images`,
         path: `${__dirname}/src/images`,
       },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `posts`,
+        path: `${__dirname}/posts`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: []
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
