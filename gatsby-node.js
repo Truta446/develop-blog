@@ -31,15 +31,31 @@ exports.createPages = ({ graphql, actions }) => {
         edges {
           node	{
             frontmatter {
-              background,
-              category,
-              date(locale: "pt-br", formatString: "DD [de] MMMM [de] YYYY"),
-              description,
+              background
+              category
+              date(locale: "pt-br", formatString: "DD [de] MMMM [de] YYYY")
+              description
               title
-            },
-            timeToRead,
+            }
+            timeToRead
             fields {
               slug
+            }
+          }
+          next {
+            frontmatter {
+              title
+            }
+            fields {
+              slug
+            }
+          }
+          previous {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
             }
           }
         }
@@ -48,17 +64,19 @@ exports.createPages = ({ graphql, actions }) => {
   `).then(result => {
     const posts = result.data.allMarkdownRemark.edges
 
-    posts.forEach(({ node }) => {
+    posts.forEach(({ node, next, previous }) => {
       createPage({
         path: node.fields.slug,
         component: path.resolve('./src/templates/blog-post.js'),
         context: {
-          slug: node.fields.slug
+          slug: node.fields.slug,
+          previousPost: next,
+          nextPost: previous
         }
       })
     })
 
-    const postsPerPage = 3
+    const postsPerPage = 6
     const numPages = Math.ceil(posts.length / postsPerPage)
 
     Array.from({ length: numPages }).forEach((_, index) => {
