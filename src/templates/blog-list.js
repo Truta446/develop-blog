@@ -48,19 +48,19 @@ export const query = graphql`
   query PostList($limit: Int!, $skip: Int!) {
     allMarkdownRemark(
       sort: {fields: frontmatter___date, order: DESC}
-      limit: $limit,
+      limit: $limit
       skip: $skip
       ) {
       edges {
         node	{
           frontmatter {
-            background,
-            category,
-            date(locale: "pt-br", formatString: "DD [de] MMMM [de] YYYY"),
-            description,
+            background
+            category
+            date(locale: "pt-br", formatString: "DD [de] MMMM [de] YYYY")
+            description
             title
           },
-          timeToRead,
+          timeToRead
           fields {
             slug
           }
