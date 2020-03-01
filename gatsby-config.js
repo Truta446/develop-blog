@@ -8,8 +8,10 @@ module.exports = {
     position: `FullStack Developer`,
     description: `A blog about frontend development and other cool stuffs.`,
     author: `Juan Versolato Lopes`,
+    siteUrl: `https://johndoe.com.br`
   },
   plugins: [
+    `gatsby-plugin-transition-link`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     // needs to be the first to work with gatsby-remark-images
@@ -72,17 +74,19 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Juan Versolato Lopes`,
+        short_name: `Juan Lopes`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        lang: `pt-BR`,
+        background_color: `#16202c`,
+        theme_color: `#16202c`,
+        display: `standalone`,
+        icon: `src/images/blog.png`
       },
     },
+    `gatsby-plugin-sitemap`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
   ],
 }
